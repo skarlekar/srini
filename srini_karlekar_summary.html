@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srini Karlekar - AI Technology Leader & Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-900: #0f172a;
+            --primary-800: #1e293b;
+            --primary-700: #334155;
+            --primary-600: #475569;
+            --primary-500: #64748b;
+            --primary-400: #94a3b8;
+            --primary-300: #cbd5e1;
+            --primary-200: #e2e8f0;
+            --primary-100: #f1f5f9;
+            --primary-50: #f8fafc;
+            
+            --accent-600: #2563eb;
+            --accent-500: #3b82f6;
+            --accent-400: #60a5fa;
+            --accent-300: #93c5fd;
+            
+            --success-500: #10b981;
+            --warning-500: #f59e0b;
+            --error-500: #ef4444;
+            
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --gradient-surface: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            --border-radius-2xl: 1.5rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-800);
+            background: var(--primary-50);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: var(--shadow-xl);
+            border-radius: var(--border-radius-2xl);
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero {
+            background: var(--gradient-primary);
+            padding: 5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .main {
+            padding: 0;
+        }
+
+        .section {
+            padding: 4rem 3rem;
+            border-bottom: 1px solid var(--primary-200);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-900);
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--primary-600);
+            line-height: 1.7;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+        .card {
+            background: var(--gradient-surface);
+            border: 1px solid var(--primary-200);
+            border-radius: var(--border-radius-xl);
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-300);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-900);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            color: var(--primary-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gradient-surface);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--primary-200);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-600);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .experience-card {
+            background: white;
+            border: 1px solid var(--primary-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-300);
+        }
+
+        .experience-title {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--primary-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--accent-600);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-duration {
+            color: var(--primary-500);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-description {
+            color: var(--primary-700);
+            line-height: 1.7;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--primary-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-900);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--primary-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-500);
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 1rem;
+                border-radius: var(--border-radius-xl);
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Srini Karlekar</h1>
+                <p class="hero-subtitle">Technology Leader & AI Architect specializing in Generative AI, Agentic Systems, and Composable Architecture for Financial Services</p>
+                <div class="hero-badge">
+                    🚀 Senior Director at Fannie Mae • 27+ Years Experience
+                </div>
+            </div>
+        </section>
+
+        <main class="main">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Overview</h2>
+                    <p class="section-description">
+                        A <span class="highlight">technology visionary</span> with deep expertise in building intelligent, scalable AI solutions. Currently leading next-generation platform development using generative AI, knowledge graphs, and composable architectures at Fannie Mae's Multifamily Division.
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">27+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Leading AI at Fannie Mae</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">AI/ML Certifications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Open Source Contributions</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Core AI Expertise</h2>
+                    <p class="section-description">
+                        Leading the convergence of AI technologies to create intelligent, autonomous systems that transform business operations
+                    </p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3 class="card-title">Generative AI & LLMs</h3>
+                        <p class="card-description">
+                            Architecting enterprise-scale generative AI solutions with advanced prompt engineering, RAG architectures, and cognitive automation for financial services.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">Claude</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">Vector DBs</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🏗️</div>
+                        <h3 class="card-title">Agentic AI Systems</h3>
+                        <p class="card-description">
+                            Designing autonomous AI agents with complex workflow orchestration, multi-agent architectures, and intelligent task automation using modern frameworks.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">n8n</span>
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">CrewAI</span>
+                            <span class="tech-tag">Multi-Agent</span>
+                            <span class="tech-tag">Workflows</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔗</div>
+                        <h3 class="card-title">Model Context Protocol (MCP)</h3>
+                        <p class="card-description">
+                            Pioneer in enterprise MCP implementations, connecting AI models to external systems through standardized protocols for scalable agent interactions.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">MCP Servers</span>
+                            <span class="tech-tag">JSON-RPC</span>
+                            <span class="tech-tag">Tool Integration</span>
+                            <span class="tech-tag">Agent Orchestration</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🧩</div>
+                        <h3 class="card-title">Composable Architecture</h3>
+                        <p class="card-description">
+                            Expert in modular, reusable systems enabling rapid innovation through composable components, microservices, and serverless architectures.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">Serverless</span>
+                            <span class="tech-tag">API Design</span>
+                            <span class="tech-tag">Event-Driven</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🕸️</div>
+                        <h3 class="card-title">Knowledge Graphs</h3>
+                        <p class="card-description">
+                            Building intelligent knowledge representation systems for enhanced AI reasoning, semantic modeling, and contextual understanding.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Neo4j</span>
+                            <span class="tech-tag">Graph Neural Networks</span>
+                            <span class="tech-tag">Semantic Web</span>
+                            <span class="tech-tag">Cypher</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🏦</div>
+                        <h3 class="card-title">Financial Technology</h3>
+                        <p class="card-description">
+                            Deep expertise in banking systems, regulatory compliance, risk management, and AI-driven financial decision automation.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Risk Analytics</span>
+                            <span class="tech-tag">Compliance</span>
+                            <span class="tech-tag">AML</span>
+                            <span class="tech-tag">RegTech</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Leadership Experience</h2>
+                    <p class="section-description">
+                        Driving technological transformation and AI innovation across Fortune 500 financial institutions
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <h3 class="experience-title">Senior Director of Technology Architecture & Engineering</h3>
+                    <div class="experience-company">Fannie Mae - Multifamily Division</div>
+                    <div class="experience-duration">April 2020 - Present (5+ years)</div>
+                    <p class="experience-description">
+                        Leading enterprise-wide AI transformation initiatives, specializing in <strong>cognitive task automation using agentic AI</strong>. Architecting next-generation platforms with emphasis on knowledge graphs, generative AI, and composable architectures. Selected as thought leader to spearhead <span class="highlight">Generative AI initiatives</span> ensuring regulatory compliance and enterprise-grade reliability.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <h3 class="experience-title">Director & Distinguished Engineer</h3>
+                    <div class="experience-company">Capital One</div>
+                    <div class="experience-duration">September 2018 - April 2020</div>
+                    <p class="experience-description">
+                        Provided technical leadership for modernizing Capital One's financial infrastructure. Developed comprehensive <strong>AI/ML strategies for Risk, AML, and Compliance portfolios</strong>. Led cloud-native architecture initiatives for Treasury, Balance Sheet, and Regulatory Reporting systems.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <h3 class="experience-title">Director Specialist - Software Architecture</h3>
+                    <div class="experience-company">KPMG Federal Advisory</div>
+                    <div class="experience-duration">January 2018 - September 2018</div>
+                    <p class="experience-description">
+                        Pioneered <strong>blockchain implementations using Distributed Ledger and Smart Contracts</strong> for public sector transformation. Established KPMG Federal's Blockchain Center of Excellence and revolutionized medical claims processing using <span class="highlight">NLP pipelines</span> for intelligent document automation.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Cutting-edge implementations showcasing expertise in MCP, composable architecture, and intelligent AI systems
+                    </p>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="project-card">
+                        <h3 class="project-title">🧳 MCP Travel Assistant Ecosystem</h3>
+                        <p class="project-description">
+                            A comprehensive suite of Model Context Protocol servers enabling LLMs to orchestrate specialized travel services. Demonstrates advanced agent coordination for flight search, hotel booking, event discovery, weather analysis, and budget management across multiple currencies.
+                        </p>
+                        <a href="https://github.com/skarlekar/mcp_travelassistant" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">📄 Doc2Graph Intelligence</h3>
+                        <p class="project-description">
+                            Advanced document understanding system that transforms unstructured documents into intelligent knowledge graphs using Graph Neural Networks. Enables sophisticated document analysis and information extraction for enterprise applications.
+                        </p>
+                        <a href="https://github.com/skarlekar" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">🎙️ AI Podcast Studio</h3>
+                        <p class="project-description">
+                            Intelligent podcast generation and management platform leveraging generative AI for content creation, automated transcription, and personalized recommendation systems. Showcases composable architecture for media processing workflows.
+                        </p>
+                        <a href="https://github.com/skarlekar" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">⛓️ SmartQuora Blockchain DApp</h3>
+                        <p class="project-description">
+                            Decentralized knowledge sharing platform built on Hyperledger Fabric with smart contracts for incentivized quality content. Demonstrates blockchain implementation with OAuth authentication and digital identity management.
+                        </p>
+                        <a href="https://github.com/skarlekar/smart-quora" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Thought Leadership</h2>
+                    <p class="section-description">
+                        Sharing insights on AI innovation, enterprise architecture, and the future of intelligent systems
+                    </p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-icon">✍️</div>
+                        <h3 class="card-title">MCP & AI Integration</h3>
+                        <p class="card-description">
+                            <strong>"Model Context Protocol: The Universal Standard Revolutionizing AI Integration"</strong> - Deep dive into MCP implementation with a real-world Intelligent Travel Assistant project that coordinates multiple AI services seamlessly.
+                        </p>
+                        <a href="https://medium.com/ai-in-plain-english/model-context-protocol-the-universal-standard-revolutionizing-ai-integration-1984395c75f7" class="project-link">Read on Medium →</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎤</div>
+                        <h3 class="card-title">Conference Speaking</h3>
+                        <p class="card-description">
+                            Regular speaker on building cognitive microservices, serverless architectures, and the convergence of AI with cloud-native systems at industry conferences and webinars.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💬</div>
+                        <h3 class="card-title">Technical Insights</h3>
+                        <p class="card-description">
+                            Active contributor to AI and technology discussions, sharing perspectives on emerging trends in agentic AI, composable architecture patterns, and enterprise AI implementation strategies.
+                        </p>
+                        <a href="https://x.com/skarlekar" class="project-link">Follow on X →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section cta-section">
+                <h2 class="cta-title">Let's Build the Future Together</h2>
+                <p class="cta-description">
+                    Ready to discuss how generative AI, composable architectures, and intelligent systems can transform your organization? Let's connect and explore the possibilities.
+                </p>
+                
+                <div class="contact-grid">
+                    <a href="mailto:skarlekar@yahoo.com" class="contact-link">
+                        📧 Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/srinikarlekar" class="contact-link">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://github.com/skarlekar" class="contact-link">
+                        🔗 GitHub
+                    </a>
+                    <a href="https://skarlekar.medium.com" class="contact-link">
+                        ✍️ Medium
+                    </a>
+                    <a href="https://x.com/skarlekar" class="contact-link">
+                        🐦 X (Twitter)
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
